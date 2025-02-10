@@ -6,9 +6,13 @@ namespace Tennis
     {
         public class Player
         {
+            /// <summary>
+            /// Tennis score names.
+            /// </summary>
             private static readonly string[] SCORE_NAME = { "Love", "Fifteen", "Thirty", "Deuce" };
             
             public readonly string name;
+            
             public uint score = 0;
 
             public Player(string name)
@@ -17,6 +21,11 @@ namespace Tennis
                 this.score = 0;
             }
 
+            /// <summary>
+            /// We get the tennis score name for this player's current score,
+            /// being the fourth one if higher.
+            /// </summary>
+            /// <returns>Love, Fifteen, Thirty or Deuce</returns>
             public string GetScoreName()
             {
                 return SCORE_NAME[Math.Min(this.score, SCORE_NAME.Length-1)];

@@ -1,7 +1,5 @@
 namespace Tennis
 {
-    
-    
     public class TennisGame1 : ITennisGame
     {
         public class Player
@@ -32,7 +30,7 @@ namespace Tennis
 
         public void WonPoint(string playerName)
         {
-            if (playerName == "player1")
+            if (playerName == this.player1.name)
                 this.player1.score += 1;
             else
                 this.player2.score += 1;

@@ -6,6 +6,8 @@ namespace Tennis
     {
         public class Player
         {
+            private static readonly string[] SCORE_NAME = { "Love", "Fifteen", "Thirty", "Deuce" };
+            
             public readonly string name;
             public int score = 0;
 
@@ -13,6 +15,11 @@ namespace Tennis
             {
                 this.name = name;
                 this.score = 0;
+            }
+
+            public string GetScoreName()
+            {
+                return SCORE_NAME[Math.Min(this.score, SCORE_NAME.Length-1)];
             }
         }
         
@@ -48,24 +55,15 @@ namespace Tennis
 
         public string GetScore()
         {
-            var tempScore = 0;
             if(this.player1.score == this.player2.score)
             {
-                switch (this.player1.score)
+                if (this.player1.score<3)
                 {
-                    case 0:
-                        return "Love-All";
-                        break;
-                    case 1:
-                        return "Fifteen-All";
-                        break;
-                    case 2:
-                        return "Thirty-All";
-                        break;
-                    default:
-                        return "Deuce";
-                        break;
-
+                    return this.player1.GetScoreName()+"-All";
+                }
+                else
+                {
+                    return this.player1.GetScoreName();
                 }
             }
             if (this.player1.score >= 4 || this.player2.score >= 4)
@@ -85,30 +83,7 @@ namespace Tennis
                 }
                 return "Win for "+this.player2.name;
             }
-
-            string score;
-            for (var i = 1; i < 3; i++)
-            {
-                //TODO Requires to do in two times
-                if (i == 1) tempScore = this.player1.score;
-                else { score += "-"; tempScore = this.player2.score; }
-                switch (tempScore)
-                {
-                    case 0:
-                        score += "Love";
-                        break;
-                    case 1:
-                        score += "Fifteen";
-                        break;
-                    case 2:
-                        score += "Thirty";
-                        break;
-                    case 3:
-                        score += "Forty";
-                        break;
-                }
-            }
-            return score;
+            return this.player1.GetScoreName() +"-"+ this.player2.GetScoreName();
         }
     }
 }

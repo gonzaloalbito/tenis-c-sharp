@@ -1,3 +1,5 @@
+using System;
+
 namespace Tennis
 {
     public class TennisGame1 : ITennisGame
@@ -31,9 +33,17 @@ namespace Tennis
         public void WonPoint(string playerName)
         {
             if (playerName == this.player1.name)
+            {
                 this.player1.score += 1;
-            else
+            }
+            else if (playerName == this.player2.name)
+            {
                 this.player2.score += 1;
+            }
+            else
+            {
+                throw new ArgumentException("invalid player name");
+            }
         }
 
         public string GetScore()

@@ -9,7 +9,7 @@ namespace Tennis
             private static readonly string[] SCORE_NAME = { "Love", "Fifteen", "Thirty", "Deuce" };
             
             public readonly string name;
-            public int score = 0;
+            public uint score = 0;
 
             public Player(string name)
             {

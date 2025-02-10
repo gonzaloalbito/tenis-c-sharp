@@ -55,11 +55,11 @@ namespace Tennis.Tests
         [ClassData(typeof(TestDataGenerator))]
         public void Tennis1Test(int p1, int p2, string expected)
         {
-            var game = new TennisGame1("player1", "player2");
+            var game = new TennisGame("player1", "player2");
             CheckAllScores(game, p1, p2, expected);
         }
 
-        private void CheckAllScores(ITennisGame game, int player1Score, int player2Score, string expectedScore)
+        private void CheckAllScores(TennisGame game, int player1Score, int player2Score, string expectedScore)
         {
             var highestScore = Math.Max(player1Score, player2Score);
             for (var i = 0; i < highestScore; i++)

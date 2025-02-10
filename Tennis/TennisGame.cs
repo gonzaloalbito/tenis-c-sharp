@@ -2,7 +2,7 @@ using System;
 
 namespace Tennis
 {
-    public class TennisGame1 : ITennisGame
+    public class TennisGame
     {
         public class Player
         {
@@ -58,7 +58,7 @@ namespace Tennis
         private Player player1;
         private Player player2;
 
-        public TennisGame1(string player1Name, string player2Name)
+        public TennisGame(string player1Name, string player2Name)
         {
             if(player1Name.Equals(player2Name))
             {
